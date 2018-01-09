@@ -11,5 +11,6 @@ require_relative 'io/io.rb'
 
 def main
   game = Game.new
+  # Run opens the stream (the communication between the engine and out bot)
   game.run
 end

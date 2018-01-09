@@ -1,8 +1,12 @@
 class Game
   def initialize
+    # Initialize with Engine.new
+    # Engine is currently empty
     @bot = Bot.new
     @settings = {}
+    # Initialize with @round & @field - they are flasey
     @status = Status.new
+    # Initialize with @name, @living_cells, @last_move - set to nil
     @me = Player.new
     @opponent = Player.new
   end
@@ -13,13 +17,17 @@ class Game
     input = Io.get
     # .send runs the first command in the input array
     # if that command is not recognised it returns 'Invalid Instruction'
-    self.send(.shift, input) || 'Invalid Instruction'
+    self.send(input.shift, input) || 'Invalid Instruction'
   end
 
+  # These private methods are only accessible once inside the stream
+  # These can be executed with the command found here:
+  # https://docs.riddles.io/game-of-life-and-death/api
   private
 
   def settings(input)
-    
+    # if the command is called player_names' add_players
+    # add_players assigns the name to @me and @opponent; then executes Run
     add_players(input) if input[0] == 'player_names'
     @settings[input[0].to_sym] = input[1]
     p @settings
