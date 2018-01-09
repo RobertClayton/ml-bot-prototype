@@ -7,6 +7,8 @@ class Player
     @last_move = nil
   end
 
+  # This returns true or false depending on whether or not the name parameter
+  # passed is the same as the name of the player (@name)
   def name?(name)
     name == @name
   end
