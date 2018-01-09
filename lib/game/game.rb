@@ -62,6 +62,9 @@ class Game
     run
   end
 
+  # This is called from the private settings method via the IO stream (e.g.
+  # settings player_names [pete rob])
+  # It assigns names to each player, prints them out, and reenters the IO stream
   def add_players(names)
     @me.name = names[1]
     @opponent.name = names[2]
