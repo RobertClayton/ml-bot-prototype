@@ -69,13 +69,25 @@ class Game
     run
   end
 
+  # This private method is called from the private update method
   def update_players(input)
+    # If name is the same as the player's name (@me.name?), then update_player is
+    # called on @me and its return value is returned
     return update_player(@me, input) if @me.name?(input.shift)
+    # If name is not the same as the player's name, then update_player is called
+    # on @opponent and its return value is returned
     update_player(@opponent, input)
   end
 
+  # This is a private method called from the private update_players method
+  # It is passed a player's name, and either the word living_cells or the word
+  # move
   def update_player(player, input)
+    # This line checks which command has been specified, and sets the specified
+    # player's last_move or living_cells value to the given input as a string
+    # (as a result of the .join method)
     input.shift == 'move' ? player.last_move = input.join : player.living_cells = input.join
+    # This prints out the Player object after the above actions have taken place
     p player
   end
 end
