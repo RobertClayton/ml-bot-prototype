@@ -57,7 +57,12 @@ class Game
   # Indicates a request for an action.
   # The time your bot has to respond is given in milliseconds.
   def action(input)
+    # This will be where the game's moves come from; at the time of writing, it
+    # is simply the string 'Random Winning Move'. This is assigned to the action
+    # variable
+    # input.last will be the time limit in milliseconds to complete a move
     action = @bot.play(@status, input.last)
+    # This prints the action to the IO stream
     Io.post(action)
     run
   end
